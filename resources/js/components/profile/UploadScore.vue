@@ -16,6 +16,15 @@
 		</div>
 		<div class="col-md-3">
 			<div class="form-group">
+				<label>Format File</label>
+				<select class="form-control" v-model="picked_format">
+					<option value="pppk">PPPK Petra</option>
+					<option value="local">Local</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="form-group">
 				<label>Mapel</label>
 				<select class="form-control" v-model="picked_subject">
 					<option value="0">Pilih Mapel</option>
@@ -58,6 +67,7 @@ export default{
 			picked_subject: 1,
 			picked_type: 'Tes',
 			picked_kd: 1,
+			picked_format: 'pppk',
 			uploadedExcel: '',
 			subjects: [],
 			datetest: '2019-01-01',
@@ -85,6 +95,7 @@ export default{
 			if(this.picked_subject != null && this.picked_type != null && this.picked_kd != null && this.picked_type != null && this.datetest != null){
 				let formData = new FormData();
 		        formData.append('file', this.uploadedExcel);
+		        formData.append('formad', this.picked_format);
 		        formData.append('subject', this.picked_subject);
 		        formData.append('type', this.picked_type);
 		        formData.append('datetest', this.datetest);
